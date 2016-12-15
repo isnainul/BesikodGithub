@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Collections;
@@ -31,5 +32,8 @@ public class GameManager : MonoBehaviour {
 		audioMixer.SetFloat ("musicVol", toggleMusic.isOn ? -80f:0f);
 		DataHelper.SetValue (DataHelper.MUSIC_ON,toggleMusic.isOn);
 	}
-		
+
+	public void Play() {
+		SceneManager.LoadScene ("Level1");
+	}
 }

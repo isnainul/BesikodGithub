@@ -74,6 +74,10 @@ public class Player : MonoBehaviour {
 		transform.position = targetPosition;
 		yield return new WaitForSeconds (0.1f);
 		isMoving = false;
+
+		if (movementQueue.Count <= 0) {
+			checkGameOver ();
+		}
 	}
 
 	IEnumerator CantMoveAnim() {
@@ -117,5 +121,12 @@ public class Player : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 
 		isMoving = false;
+		if (movementQueue.Count <= 0) {
+			checkGameOver ();
+		}
+	}
+
+	void checkGameOver() {
+		GameObject.Find ("GameplayManager").GetComponent<GameplayManager> ().checkGameOver ();
 	}
 }
